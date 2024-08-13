@@ -1,6 +1,6 @@
 # Swipe2Learn
 
-This is a flashcard SaaS.
+This is a flashcard SaaS powered by AI.
 
 ## Overview
 
