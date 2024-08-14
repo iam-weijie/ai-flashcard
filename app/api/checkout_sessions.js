@@ -47,3 +47,22 @@ export async function POST(req) {
     );
   }
 }
+
+export async function GET(req) {
+  const searchParams = req.nextUrl.searchParams;
+  const session_id = searchParams.get("session_id");
+
+  if (!session_id) {
+    return new NextResponse(
+      JSON.stringify({ error: { message: "Invalid session_id" } }),
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const checkoutSession = await stripe.checkout.sessions.retrieve(session_id);
+  return new NextResponse.json(checkoutSession, {
+    status: 200,
+  });
+}
