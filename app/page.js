@@ -1,4 +1,15 @@
 import getStripe from "@/utils/get-stripe";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Grid,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import Head from "next/head";
 
 export default function Home() {
   const handleSubmit = async () => {
@@ -19,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <container maxWidth="lg">
+    <Container maxWidth="lg">
       <Head>
         <title>Swipe2Learn</title>
         <meta name="description" content="Create flashcards from your text" />
@@ -77,6 +88,6 @@ export default function Home() {
           {/* Pricing plans */}
         </Grid>
       </Box>
-    </container>
+    </Container>
   );
 }

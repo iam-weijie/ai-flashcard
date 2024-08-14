@@ -1,6 +1,17 @@
 "use client";
 
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 
 export default function Generate() {
@@ -36,7 +47,7 @@ export default function Generate() {
     }
   };
 
-  const saveFlashcard = async () => {
+  const saveFlashcards = async () => {
     if (!setName.trim()) {
       alert("Please enter a name for the flashcard set.");
       return;
