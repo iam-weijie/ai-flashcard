@@ -1,3 +1,5 @@
+"use client";
+
 import { useUser } from "@clerk/nextjs";
 import {
   CardActionArea,
@@ -6,7 +8,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Flashcards() {
