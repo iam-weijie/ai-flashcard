@@ -1,9 +1,8 @@
 "use client";
 
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const ResultPage = () => {
   const router = useRouter();
