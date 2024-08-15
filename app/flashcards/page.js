@@ -1,3 +1,14 @@
+import { useUser } from "@clerk/nextjs";
+import {
+  CardActionArea,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 export default function Flashcards() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
