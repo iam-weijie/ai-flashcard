@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
