@@ -14,6 +14,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { collection, doc, getDoc, writeBatch } from "firebase/firestore";
 import { useState } from "react";
 
 export default function Generate() {
