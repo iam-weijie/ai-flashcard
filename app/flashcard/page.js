@@ -1,3 +1,5 @@
+"user client";
+
 import { useUser } from "@clerk/nextjs";
 import {
   Box,
