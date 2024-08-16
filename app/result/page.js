@@ -8,6 +8,7 @@ const ResultPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const session_id = searchParams.get("session_id");
+
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState(null);
   const [error, setError] = useState(null);
@@ -15,6 +16,7 @@ const ResultPage = () => {
   useEffect(() => {
     const fetchCheckoutSession = async () => {
       if (!session_id) return;
+
       try {
         const res = await fetch(
           `/api/checkout_sessions?session_id=${session_id}`

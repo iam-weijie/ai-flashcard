@@ -2,7 +2,28 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const formatAmountForStripe = (amount) => Math.round(amount * 100);
+const formatAmountForStripe = (amount) => {
+  return Math.round(amount * 100);
+};
+
+export async function GET(req) {
+  const searchParams = req.nextUrl.searchParams;
+  const session_id = searchParams.get("session_id");
+
+  if (!session_id) {
+    return new NextResponse(
+      JSON.stringify({ error: { message: "Invalid session_id" } }),
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const checkoutSession = await stripe.checkout.sessions.retrieve(session_id);
+  return new NextResponse.json(checkoutSession, {
+    status: 200,
+  });
+}
 
 export async function POST(req) {
   try {
@@ -46,23 +67,4 @@ export async function POST(req) {
       }
     );
   }
-}
-
-export async function GET(req) {
-  const searchParams = req.nextUrl.searchParams;
-  const session_id = searchParams.get("session_id");
-
-  if (!session_id) {
-    return new NextResponse(
-      JSON.stringify({ error: { message: "Invalid session_id" } }),
-      {
-        status: 400,
-      }
-    );
-  }
-
-  const checkoutSession = await stripe.checkout.sessions.retrieve(session_id);
-  return new NextResponse.json(checkoutSession, {
-    status: 200,
-  });
 }

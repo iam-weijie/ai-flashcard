@@ -1,3 +1,5 @@
+"use client";
+
 import getStripe from "@/utils/get-stripe";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
