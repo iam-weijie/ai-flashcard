@@ -30,4 +30,4 @@ const seed = [
   },
 ];
 
-export default seed;
+// export default seed;
