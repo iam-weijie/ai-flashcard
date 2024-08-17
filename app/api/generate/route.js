@@ -15,16 +15,24 @@ Return the flashcards in the following JSON format:
 }`;
 
 export async function POST(req) {
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  try {
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const data = await req.text();
-  const completion = await model.generateContent([systemPrompt, ...data]);
+    const data = await req.text();
+    const completion = await model.generateContent([systemPrompt, ...data]);
 
-  let content = completion.response.candidates[0].content.parts[0].text.trim();
-  content = content.replace(/```json/g, "").replace(/```/g, "");
+    let content =
+      completion.response.candidates[0].content.parts[0].text.trim();
+    content = content.replace(/```json/g, "").replace(/```/g, "");
 
-  const flashcards = JSON.parse(content);
+    const flashcards = JSON.parse(content);
 
-  return NextResponse.json(flashcards.flashcards);
+    return NextResponse.json(flashcards.flashcards);
+  } catch (e) {
+    console.error("Error generating flashcards:", error);
+    return NextResponse.json({
+      error: "An error occured. Please try again later.",
+    });
+  }
 }
