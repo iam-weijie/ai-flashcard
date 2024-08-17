@@ -10,13 +10,17 @@ export default function Home() {
   const [cards, setCards] = useState([]);
 
   const handleSubmit = async () => {
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      body: text,
-    });
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        body: text,
+      });
 
-    const data = await response.json();
-    setCards(data);
+      const data = await response.json();
+      setCards(data || []);
+    } catch (e) {
+      console.error("Error fetching flashcards:", e);
+    }
   };
 
   return (
