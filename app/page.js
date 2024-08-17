@@ -1,7 +1,7 @@
 "use client";
 
 import Deck from "@/components/Deck";
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Link, Paper, TextField } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -31,7 +31,9 @@ export default function Home() {
           display: { xs: "none", sm: "block" },
         }}
       >
-        <Image src="/logo.png" alt="Swipe2Learn" width={100} height={100} />
+        <Link href="https://github.com/iam-weijie/ai-flashcard">
+          <Image src="/logo.png" alt="Swipe2Learn" width={100} height={100} />
+        </Link>
       </Box>
 
       <Paper
