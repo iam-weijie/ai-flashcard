@@ -21,5 +21,10 @@ export async function POST(req) {
   const data = await req.text();
   const completion = await model.generateContent([systemPrompt, ...data]);
 
-  return NextResponse.json(completion);
+  let content = completion.response.candidates[0].content.parts[0].text.trim();
+  content = content.replace(/```json/g, "").replace(/```/g, "");
+
+  const flashcards = JSON.parse(content);
+
+  return NextResponse.json(flashcards.flashcards);
 }

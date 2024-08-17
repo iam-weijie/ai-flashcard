@@ -1,58 +1,48 @@
 "use client";
 
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  Grid,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import Head from "next/head";
+import Deck from "@/components/Deck";
+import { Button, Paper, TextField } from "@mui/material";
+import { useState } from "react";
 
 export default function Home() {
+  const [text, setText] = useState("");
+  const [cards, setCards] = useState([]);
+
+  const handleSubmit = async () => {
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      body: text,
+    });
+
+    const data = await response.json();
+    setCards(data);
+  };
+
   return (
-    <Container maxWidth="lg">
-      <Head>
-        <title>Swipe2Learn</title>
-        <meta name="description" content="Create flashcards from your text" />
-      </Head>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Swipe2Learn
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Box sx={{ textAlign: "center", my: 4 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to Swipe2Learn
-        </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          The easiest way to create flashcards from your text.
-        </Typography>
+    <>
+      <Paper sx={{ p: 4, width: "100%" }}>
+        <TextField
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          label="Enter a topic"
+          fullWidth
+          multiline
+          rows={1}
+          variant="outlined"
+          sx={{ mb: 2 }}
+        ></TextField>
         <Button
           variant="contained"
-          color="primary"
-          sx={{ mt: 2, mr: 2 }}
-          href="/generate"
+          colors="primary"
+          onClick={handleSubmit}
+          fullWidth
         >
-          Get Started
+          Generate
         </Button>
-        <Button variant="outlined" color="primary" sx={{ mt: 2 }}>
-          Learn More
-        </Button>
-      </Box>
-      <Box sx={{ my: 6 }}>
-        <Typography variant="h4" component="h2" gutterBottom>
-          Features
-        </Typography>
-        <Grid container spacing={4}>
-          {/* Feature items */}
-        </Grid>
-      </Box>
-      <Box sx={{ my: 6, textAlign: "center" }}></Box>
-    </Container>
+      </Paper>
+      <div id="root">
+        <Deck data={cards} />
+      </div>
+    </>
   );
 }
