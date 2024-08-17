@@ -1,7 +1,8 @@
 "use client";
 
 import Deck from "@/components/Deck";
-import { Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Paper, TextField } from "@mui/material";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
@@ -19,7 +20,20 @@ export default function Home() {
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <>
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 10,
+          p: 2,
+          zIndex: 10,
+          display: { xs: "none", sm: "block" },
+        }}
+      >
+        <Image src="/logo.png" alt="Swipe2Learn" width={100} height={100} />
+      </Box>
+
       <Paper
         sx={{
           position: "absolute",
@@ -47,12 +61,13 @@ export default function Home() {
           sx={{ width: "300px" }}
         />
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Generate
+          Generate flashcards
         </Button>
       </Paper>
-      <div id="root" style={{ paddingTop: "50px" }}>
+
+      <div id="root" style={{ paddingTop: "30px" }}>
         <Deck data={cards} />
       </div>
-    </div>
+    </>
   );
 }
