@@ -19,30 +19,40 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Paper sx={{ p: 4, width: "100%" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <Paper
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 10,
+          bgcolor: "rgba(255, 255, 255, 0.8)", // Semi-transparent background
+          padding: 2,
+          borderRadius: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          alignItems: "center",
+        }}
+        elevation={3} // Optional: Adds a shadow to the Paper
+      >
         <TextField
           value={text}
           onChange={(e) => setText(e.target.value)}
           label="Enter a topic"
-          fullWidth
           multiline
           rows={1}
           variant="outlined"
-          sx={{ mb: 2 }}
-        ></TextField>
-        <Button
-          variant="contained"
-          colors="primary"
-          onClick={handleSubmit}
-          fullWidth
-        >
+          sx={{ width: "300px" }}
+        />
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Generate
         </Button>
       </Paper>
-      <div id="root">
+      <div id="root" style={{ paddingTop: "50px" }}>
         <Deck data={cards} />
       </div>
-    </>
+    </div>
   );
 }
