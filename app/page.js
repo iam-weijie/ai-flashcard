@@ -4,12 +4,15 @@ import Deck from "@/components/Deck";
 import { Box, Button, Link, Paper, TextField } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import "./Deck.css";
 
 export default function Home() {
   const [text, setText] = useState("");
   const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    setLoading(true); // Show loader
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -25,6 +28,8 @@ export default function Home() {
       setCards(data || []);
     } catch (e) {
       console.error("Error fetching flashcards:", e);
+    } finally {
+      setLoading(false); // Hide loader
     }
   };
 
@@ -75,6 +80,8 @@ export default function Home() {
           Generate flashcards
         </Button>
       </Paper>
+
+      {loading && <div className="loader"></div>}
 
       <div id="root" style={{ paddingTop: "30px" }}>
         <Deck data={cards} />

@@ -10,7 +10,6 @@ import Card from "./Card";
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({
   x: 0,
-  y: i * -4,
   scale: 1,
   rot: -10 + Math.random() * 20,
   delay: i * 100,
