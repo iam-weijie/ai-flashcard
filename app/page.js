@@ -16,7 +16,12 @@ export default function Home() {
         body: text,
       });
 
+      if (!response.ok) {
+        throw new Error("Failed to fetch response");
+      }
+
       const data = await response.json();
+
       setCards(data || []);
     } catch (e) {
       console.error("Error fetching flashcards:", e);

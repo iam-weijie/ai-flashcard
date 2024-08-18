@@ -10,6 +10,7 @@ import Card from "./Card";
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({
   x: 0,
+  y: i * -4,
   scale: 1,
   rot: -10 + Math.random() * 20,
   delay: i * 100,
@@ -29,7 +30,7 @@ const trans = (r, s) =>
 function Deck({ data }) {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
 
-  const [props, api] = useSprings(data.length, (i) => ({
+  const [props, api] = useSprings(data.length || 0, (i) => ({
     ...to(i),
     from: from(i),
   })); // Create a bunch of springs using the helpers above
