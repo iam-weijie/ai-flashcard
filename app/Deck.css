@@ -24,6 +24,7 @@ body {
   cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
       39 39,
     auto;
+  padding-top: 30px;
 }
 
 #root > div {
@@ -160,5 +161,11 @@ h5:last-of-type {
   100% {
     -webkit-mask-size: auto, 25px 25px, 25px 25px, 30px 30px, 30px 30px,
       25px 25px, 25px 25px, 25px 25px, 200% 200%;
+  }
+}
+
+@media (max-width: 600px) {
+  #root {
+    padding-top: 0;
   }
 }

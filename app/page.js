@@ -83,7 +83,7 @@ export default function Home() {
 
       {loading && <div className="loader"></div>}
 
-      <div id="root" style={{ paddingTop: "30px" }}>
+      <div id="root">
         <Deck data={cards} />
       </div>
     </>
