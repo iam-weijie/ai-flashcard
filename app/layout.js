@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Swipe2Learn",
-  description: "AI Generated Flashcards",
+  description: "AI-Generated Flashcards",
 };
 
 export default function RootLayout({ children }) {
