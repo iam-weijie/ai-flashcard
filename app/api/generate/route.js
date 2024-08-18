@@ -31,8 +31,11 @@ export async function POST(req) {
     return NextResponse.json(flashcards.flashcards);
   } catch (e) {
     console.error("Error generating flashcards:", e.message, e.stack);
-    return NextResponse.json({
-      error: "An error occured. Please try again later.",
-    });
+    return NextResponse.json([
+      {
+        front: "No flashcard generated",
+        back: "Please try a different topic.",
+      },
+    ]);
   }
 }
