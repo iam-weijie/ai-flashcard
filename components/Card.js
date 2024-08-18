@@ -2,6 +2,9 @@ import { animated, to } from "@react-spring/web";
 
 const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
   const { front, back } = data[i];
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
+    front
+  )}`;
 
   return (
     <animated.div
@@ -19,6 +22,11 @@ const Card = ({ i, x, y, rot, scale, trans, bind, data }) => {
         <div className="card">
           <h2> {front} </h2>
           <h2> {back} </h2>
+          <img
+            className="generated-image"
+            src={imageUrl}
+            alt="Swipe2Learn"
+          ></img>
         </div>
       </animated.div>
     </animated.div>
