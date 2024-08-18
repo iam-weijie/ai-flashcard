@@ -64,13 +64,11 @@ h2:nth-of-type(2) {
 }
 
 h5 {
-  margin-top: -15px;
-  margin-left: 2px;
-  color: lightgray;
-}
-
-h5:last-of-type {
-  color: lightgray;
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  color: white;
+  z-index: 1;
 }
 
 .card > div {
