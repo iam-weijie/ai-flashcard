@@ -12,3 +12,5 @@ The project uses the following stack:
 - [React Spring](https://www.react-spring.dev/)
 - [Gemini API](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)
 - [Pollinations](https://image.pollinations.ai/prompt/)
+
+![Swipe2Learn](public/demo.png)
