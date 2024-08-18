@@ -52,7 +52,13 @@ export default function Home() {
       <Typography
         variant="h5"
         fontSize={20}
-        sx={{ display: { xs: "none", sm: "block" } }}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "block",
+            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+          },
+        }}
       >
         Swipe2Learn
       </Typography>
