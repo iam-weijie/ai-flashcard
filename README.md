@@ -8,6 +8,7 @@ The project uses the following stack:
 
 - Next.js
 - JavaScript
-- Material UI
-- React Spring
-- Gemini API
+- [Material UI](https://mui.com/material-ui/)
+- [React Spring](https://www.react-spring.dev/)
+- [Gemini API](https://ai.google.dev/gemini-api/docs/quickstart?lang=node)
+- [Pollinations](https://image.pollinations.ai/prompt/)
