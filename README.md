@@ -14,3 +14,5 @@ The project uses the following stack:
 - [Pollinations](https://image.pollinations.ai/prompt/)
 
 ![Swipe2Learn](public/demo.png)
+
+Check out my LinkedIn post [here](https://www.linkedin.com/posts/weijiew_ai-microlearning-flashcards-activity-7231032668560261120-A44s?utm_source=share&utm_medium=member_desktop)
